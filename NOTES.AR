@@ -1,3 +1,38 @@
 NOTES ON THE B&R AUTOMATION RUNTIME PLATFORM
 ============================================
 
+GIT
+---
+forked repository from https://github.com/openssl/openssl
+see https://github.blog/2015-07-29-git-2-5-including-multiple-worktrees-and-triangular-workflows/#improved-support-for-triangular-workflows
+
+Command flow:
+git clone https://github.com/br-automation-com/openssl-ar-dev.git
+git config remote.pushdefault origin
+git config push.default current
+git remote add upstream https://github.com/openssl/openssl
+git fetch upstream
+git fetch upstream --tags
+git checkout upstream/OpenSSL_1_1_1-stable (done via VsCode)
+git checkout -b openssl-ar_1_1_1 OpenSSL_1_1_1g (done via VsCode)
+
+DEVELOPMENT REPO
+----------------
+The actual development and export of the openssl library for AR is done in the following repo
+https://github.com/br-automation-com/openssl-ar-project.git
+this repository uses the following submodules:
+- https://github.com/br-automation-com/openssl-ar-dev.git
+- https://github.com/br-automation-com/ar-util.git
+
+SPECIAL COMPILER SWITCHES
+-------------------------
+The Automation Runtime Platform is identified with the BR_AUTOMATION_RUNTIME symbol,
+which is used wherever code changes have been necessary.
+
+
+TODO
+----
+
+Configure script: ar-target -> ANSIC.lby
+
+
