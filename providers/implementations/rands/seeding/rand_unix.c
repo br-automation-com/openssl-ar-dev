@@ -355,14 +355,18 @@ static ssize_t syscall_random(void *buf, size_t buflen)
      */
 #  if !defined(__DragonFly__) && !defined(__NetBSD__)
 #    if defined(__GNUC__) && __GNUC__>=2 && defined(__ELF__) && !defined(__hpux)
-    extern int getentropy(void *buffer, size_t length) __attribute__((weak));
+    #if defined(BR_AUTOMATION_RUNTIME)
+        return getentropy(buf, buflen) == 0 ? (ssize_t)buflen : -1;
+    #else
+        extern int getentropy(void *buffer, size_t length) __attribute__((weak));
 
-    if (getentropy != NULL) {
-        if (getentropy(buf, buflen) == 0)
-            return (ssize_t)buflen;
-        if (errno != ENOSYS)
-            return -1;
-    }
+        if (getentropy != NULL) {
+            if (getentropy(buf, buflen) == 0)
+                return (ssize_t)buflen;
+            if (errno != ENOSYS)
+                return -1;
+        }
+    #endif
 #    elif defined(OPENSSL_APPLE_CRYPTO_RANDOM)
 
     if (CCRandomGenerateBytes(buf, buflen) == kCCSuccess)
