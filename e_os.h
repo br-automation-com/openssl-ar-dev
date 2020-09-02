@@ -322,6 +322,10 @@ extern FILE *_imp___iob;
 #  include <strings.h>
 # endif
 
+#if defined(BR_AUTOMATION_RUNTIME)
+# include <ar_time.h>
+#endif
+
 /* vxworks */
 # if defined(OPENSSL_SYS_VXWORKS)
 #  include <ioLib.h>
