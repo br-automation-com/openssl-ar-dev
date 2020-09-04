@@ -17,6 +17,7 @@
 #include <openssl/bn.h>
 
 #if defined(BR_AUTOMATION_RUNTIME)
+# include "testutil/output.h"    
 # define printf(_f_, ...) test_printf_stdout(_f_, ##__VA_ARGS__)
 #endif
 

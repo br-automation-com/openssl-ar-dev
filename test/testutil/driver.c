@@ -132,6 +132,14 @@ int pulldown_test_framework(int ret)
         return EXIT_FAILURE;
 #endif
 
+#ifdef BR_AUTOMATION_RUNTIME
+    memset(all_tests,0,sizeof(all_tests));
+    num_tests = 0;
+    seed = 0;
+    num_test_cases = 0;
+    level = 0;
+#endif
+
     return ret;
 }
 
