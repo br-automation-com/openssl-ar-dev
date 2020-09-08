@@ -259,6 +259,8 @@ FILE *__iob_func();
 #   define unlink _unlink
 #   define fileno _fileno
 #  endif
+# elif defined(BR_AUTOMATION_RUNTIME)
+#  include <ar_strings.h>
 # else
 #  include <strings.h>
 # endif
