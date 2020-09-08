@@ -796,7 +796,7 @@ static int test_rand_drbg_reseed(void)
         goto error;
     reset_drbg_hook_ctx();
 
-#if defined(OPENSSL_SYS_UNIX)
+#if defined(OPENSSL_SYS_UNIX) && !defined(BR_AUTOMATION_RUNTIME)
     if (!TEST_true(test_drbg_reseed_after_fork(master, public, private)))
         goto error;
 #endif

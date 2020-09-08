@@ -313,6 +313,7 @@ ENGINE *ENGINE_by_id(const char *id)
     CRYPTO_THREAD_unlock(global_engine_lock);
     if (iterator != NULL)
         return iterator;
+#ifndef OPENSSL_NO_DYNAMIC_ENGINE
     /*
      * Prevent infinite recursion if we're looking for the dynamic engine.
      */
@@ -330,11 +331,13 @@ ENGINE *ENGINE_by_id(const char *id)
         return iterator;
     }
  notfound:
+#else
     ENGINE_free(iterator);
     ENGINEerr(ENGINE_F_ENGINE_BY_ID, ENGINE_R_NO_SUCH_ENGINE);
     ERR_add_error_data(2, "id=", id);
     return NULL;
     /* EEK! Experimental code ends */
+#endif
 }
 
 int ENGINE_up_ref(ENGINE *e)
