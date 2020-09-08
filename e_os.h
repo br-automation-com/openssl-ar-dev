@@ -318,6 +318,8 @@ extern FILE *_imp___iob;
 #   define unlink _unlink
 #   define fileno _fileno
 #  endif
+# elif defined(BR_AUTOMATION_RUNTIME)
+#  include <ar_strings.h>
 # else
 #  include <strings.h>
 # endif
