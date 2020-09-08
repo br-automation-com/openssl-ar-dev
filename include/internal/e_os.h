@@ -260,6 +260,8 @@ FILE *__iob_func(void);
 #   define fileno _fileno
 #   define isatty _isatty
 #  endif
+# elif defined(BR_AUTOMATION_RUNTIME)
+#  include <ar_strings.h>
 # else
 #  include <strings.h>
 # endif
