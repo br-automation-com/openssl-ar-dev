@@ -22,8 +22,7 @@
 #  endif
 
 #  if defined(HAVE_C11_ATOMICS) && defined(ATOMIC_INT_LOCK_FREE) \
-      && ATOMIC_INT_LOCK_FREE > 0 \
-     && (!defined(__arm__) || !defined(BR_AUTOMATION_RUNTIME))
+      && ATOMIC_INT_LOCK_FREE > 0
 
 #   define HAVE_ATOMICS 1
 

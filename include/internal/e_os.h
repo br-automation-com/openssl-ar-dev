@@ -267,7 +267,7 @@ FILE *__iob_func(void);
 # endif
 
 #if defined(BR_AUTOMATION_RUNTIME)
-# include <ar_time.h>
+# include <time.h>
 #endif
 
 /* vxworks */
