@@ -325,7 +325,7 @@ extern FILE *_imp___iob;
 # endif
 
 #if defined(BR_AUTOMATION_RUNTIME)
-# include <ar_time.h>
+# include <time.h>
 #endif
 
 /* vxworks */
