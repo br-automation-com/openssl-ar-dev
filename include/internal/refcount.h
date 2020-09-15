@@ -21,8 +21,7 @@
 #  endif
 
 #  if defined(HAVE_C11_ATOMICS) && defined(ATOMIC_INT_LOCK_FREE) \
-      && ATOMIC_INT_LOCK_FREE > 0 \
-      && (!defined(__arm__) || !defined(BR_AUTOMATION_RUNTIME))
+      && ATOMIC_INT_LOCK_FREE > 0
 
 #   define HAVE_ATOMICS 1
 
@@ -54,8 +53,7 @@ static inline int CRYPTO_DOWN_REF(_Atomic int *val, int *ret,
     return 1;
 }
 
-#  elif defined(__GNUC__) && defined(__ATOMIC_RELAXED) && __GCC_ATOMIC_INT_LOCK_FREE > 0 \
-    && (!defined(__arm__) || !defined(BR_AUTOMATION_RUNTIME))
+#  elif defined(__GNUC__) && defined(__ATOMIC_RELAXED) && __GCC_ATOMIC_INT_LOCK_FREE > 0
 
 #   define HAVE_ATOMICS 1
 
