@@ -19,11 +19,6 @@
 # include <openssl/x509.h>
 # include "opt.h"
 
-#if defined(BR_AUTOMATION_RUNTIME)
-# include "testutil/output.h"    
-# define printf(_f_, ...) test_printf_stderr(_f_, ##__VA_ARGS__)
-#endif
-
 /*-
  * Simple unit tests should implement setup_tests().
  * This function should return zero if the registration process fails.
