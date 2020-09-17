@@ -235,11 +235,7 @@ int BIO_socket_ioctl(int fd, long type, void *arg)
 #     define ARG arg
 #    endif                      /* __INITIAL_POINTER_SIZE == 64 [else] */
 #   else                        /* defined(OPENSSL_SYS_VMS) */
-#    ifdef BR_AUTOMATION_RUNTIME
-#     define ARG *((int *)arg)
-#    else
-#     define ARG arg
-#    endif
+#    define ARG arg
 #   endif                       /* defined(OPENSSL_SYS_VMS) [else] */
 
     i = ioctlsocket(fd, type, ARG);
