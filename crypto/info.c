@@ -170,9 +170,17 @@ const char *OPENSSL_info(int t)
     case OPENSSL_INFO_CONFIG_DIR:
         return OPENSSLDIR;
     case OPENSSL_INFO_ENGINES_DIR:
+#ifdef ENGINESDIR
         return ENGINESDIR;
+#else
+        return "ENGINESDIR: N/A";
+#endif
     case OPENSSL_INFO_MODULES_DIR:
+#ifdef MODULESDIR
         return MODULESDIR;
+#else
+        return "MODULESDIR: N/A";
+#endif
     case OPENSSL_INFO_DSO_EXTENSION:
         return DSO_EXTENSION;
     case OPENSSL_INFO_DIR_FILENAME_SEPARATOR:

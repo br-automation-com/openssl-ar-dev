@@ -889,8 +889,11 @@ static int provider_init(OSSL_PROVIDER *prov)
 
             if (load_dir == NULL) {
                 load_dir = ossl_safe_getenv("OPENSSL_MODULES");
-                if (load_dir == NULL)
-                    load_dir = MODULESDIR;
+				if (load_dir == NULL){
+#ifdef MODULESDIR
+					load_dir = MODULESDIR;
+#endif
+				}
             }
 
             DSO_ctrl(prov->module, DSO_CTRL_SET_FLAGS,
